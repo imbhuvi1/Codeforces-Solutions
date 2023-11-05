@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    
+    int arr[n];
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    
+    int m = arr[n-1]-arr[0];
+    if(m<0)
+    m = m*(-1);
+    
+    int f = n;
+    int s = 1;
+    
+    int k,t,k0=m;
+    for(int i=1;i<n;i++){ 
+        
+        k = arr[i] - arr[i-1] ;
+        if(k<0)
+        k = k*(-1);
+        if(k==t){
+            continue;
+        }
+        if(k<m && k<k0){
+            f = i;
+            s = i+1;
+            k0=k;
+        }
+        t = k;
+    }
+    printf("%d %d",f,s);
+    return 0;
+}
